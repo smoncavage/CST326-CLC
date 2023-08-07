@@ -51,8 +51,7 @@ class Paginator{
             return '';
         }
         
-        $last       = ceil( $this->_total / $this->_limit );
-        
+        $last       = ceil( $this->_total / $this->_limit );     
         $start      = ( ( $this->_page - $links ) > 0 ) ? $this->_page - $links : 1;
         $end        = ( ( $this->_page + $links ) < $last ) ? $this->_page + $links : $last;
         
