@@ -27,13 +27,15 @@ use Monolog\Handler\BrowserConsoleHandler;
 use Monolog\Processor\WebProcessor;
 
 class MyLogger implements ILogger{
+	
+	$xmlin = simplexml_load_file("config.xml") or die("Error: Cannot create object");
 	private static $logger = null;
 		
 	static function getLogger(){
 		if(self::$logger == null){
 			//Log to Standard 
 			self::$logger = new Logger('phpLog');
-			self::$logger->pushHandler(new LogglyHandler('e835e345-6359-461c-ae27-66eb600b922e/tag/monolog', Logger::DEBUG));
+			self::$logger->pushHandler(new LogglyHandler($xmlin->tokens[0]+'/tag/monolog', Logger::DEBUG));
 			self::$logger->addWarning('test logs to loggly');
 		}
 		return self::$logger;

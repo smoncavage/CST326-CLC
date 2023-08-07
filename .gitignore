@@ -9,6 +9,7 @@ __pycache__/
 
 #PHP
 /vendor/
+.xml
 
 # Distribution / packaging
 .Python
